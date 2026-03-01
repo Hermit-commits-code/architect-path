@@ -50,7 +50,16 @@
         margin: 2rem auto;
         padding: 0 var(---spacing-base);
       }
+      /* Clamp(smallest, ideal, absolute max) */
+      h1 {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        margin-bottom: 1.5rem;
+      }
 
+      h2 {
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        margin-top: 2rem;
+      }
       nav ul {
         display: flex;
         gap: 1.5rem;
@@ -121,6 +130,30 @@
         padding: 3rem 0;
         color: #777;
         font-size: 0.9rem;
+      }
+      /* Container queries only care about the parent element. */
+      section {
+        container-type: inline-size;
+        container-name: section-card;
+      }
+
+      @container section-card (min-width: 500px) {
+        .component-preview {
+          padding: 4rem;
+          background-color: #e0e0e0;
+        }
+      }
+
+      #tokens table {
+        margin-top: 1rem;
+        /* tabular-nums ensure that numbers in the table align vertically. */
+        font-variant-numeric: tabular-nums;
+      }
+
+      #patterns p {
+        /* 60ch is character width on paragraphs ensures that text never gets too wide 
+        to read comfortably even on a massive monitor. */
+        max-width: 60ch;
       }
     </style>
   </head>

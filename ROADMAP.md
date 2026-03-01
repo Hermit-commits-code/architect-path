@@ -9,10 +9,10 @@
 - [x] Project: Design System Documentation Portal
 
 ### Phase 2: Layout & Design Systems (CSS3/PostCSS)
-- [ ] Box Model & Modern Reset Strategies
-- [ ] Flexbox & CSS Grid Mastery
-- [ ] Fluid Typography & Container Queries
-- [ ] PostCSS & CSS Modules (No Frameworks)
+- [x] Box Model & Modern Reset Strategies
+- [x] Flexbox & CSS Grid Mastery
+- [x] Fluid Typography & Container Queries
+- [x] PostCSS & CSS Modules (No Frameworks)
 
 ### Phase 3: The Engine (JavaScript ESNext)
 - [ ] The Event Loop & Memory Management
