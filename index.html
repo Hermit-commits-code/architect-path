@@ -111,9 +111,7 @@
         border-radius: 4px;
         cursor: pointer;
         font-weight: 600;
-        transition: all 0.2s ease;
       }
-
       .btn-primary:hover {
         opacity: 0.9;
         transform: translateY(-1px);
@@ -156,7 +154,7 @@
       }
 
       #patterns p {
-        /* 60ch is character width on paragraphs ensures that text never gets too wide 
+        /* 60ch is character width on paragraphs ensures that text never gets too wide
         to read comfortably even on a massive monitor. */
         max-width: 60ch;
       }
@@ -245,10 +243,12 @@
       const searchInput = document.getElementById("tokenSearch");
       const tableRows = document.querySelectorAll("#tokens tbody tr");
 
-      searchInput.addEventListener("input", (e) => {
-        const searchItem = e.target.value.toLowerCase();
-
-        filterTokens(searchTerm);
+      window.addEventListener("DOMContentLoaded", () => {
+        const savedSearch = localStorage.getItem("lastSearch");
+        if (savedSearch) {
+          searchInput.value = savedSearch;
+          filterTokens(savedSearch);
+        }
       });
 
       function filterTokens(term) {
@@ -263,6 +263,12 @@
 
         console.log(`Found ${matchCount} tokens`);
       }
+
+      searchInput.addEventListener("input", (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        localStorage.setItem("lastSearch", searchTerm);
+        filterTokens(searchTerm);
+      });
     </script>
   </body>
 </html>
