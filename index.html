@@ -160,6 +160,21 @@
         to read comfortably even on a massive monitor. */
         max-width: 60ch;
       }
+
+      #tokenSearch {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1.5rem;
+        border: 2px solid #ddd;
+        border-radius: 6px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+
+        &:focus {
+          border-color: var(--primary-blue);
+        }
+      }
     </style>
   </head>
   <body>
@@ -183,6 +198,12 @@
           values for colors, typography, and spacing to ensure consistency
           across all platforms.
         </p>
+        <input
+          type="text"
+          id="tokenSearch"
+          placeholder="Search tokens..."
+          aria-label="Filter design tokens"
+        />
         <table>
           <thead>
             <tr>
@@ -220,5 +241,28 @@
     <footer>
       <p>&COPY; 2026 Design System Portal. All rights reserved.</p>
     </footer>
+    <script>
+      const searchInput = document.getElementById("tokenSearch");
+      const tableRows = document.querySelectorAll("#tokens tbody tr");
+
+      searchInput.addEventListener("input", (e) => {
+        const searchItem = e.target.value.toLowerCase();
+
+        filterTokens(searchTerm);
+      });
+
+      function filterTokens(term) {
+        let matchCount = 0;
+        tableRows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          const isVisible = text.includes(term);
+          row.style.display = isVisible ? "" : "none";
+
+          if (isVisible) matchCount++;
+        });
+
+        console.log(`Found ${matchCount} tokens`);
+      }
+    </script>
   </body>
 </html>
